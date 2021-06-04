@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://ez-css.now.sh">
+    <style>
+      .done {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app">
+      <h3 style="margin: auto; display: flex; justify-content: center; color: red;">{{title}}</h3>
+      <form @submit.prevent="addTodo">
+        <label for="newTodo" style="display: flex;  justify-content: center;">New Todo</label>
+        <input v-model="newTodo " style="width: 30%; margin: auto; justify-content: center; display: flex;" type="text" name="newTodo" id="newTodo" value="">
+        <button type="submit" name="button"style="width: 10%; margin: auto; justify-content: center; display: flex; margin-top:10px;">Add</button>
+      </form>
+      <button @click="allDone" type="button" name="button" style="width: 15%; margin: auto; justify-content: center; display: flex; margin-top:10px;">All Done</button>
+      <ul>
+        <li v-for="todo in todos" >
+          <input type="checkbox" v-model="todo.done">
+          <span :class="{ done: todo.done }" style="display:flex; justify-content: center;">{{todo.title}}</span>
+          <button @click="removeTodo(todo)" type="button" name="button"style="width: 25%; margin: auto; justify-content: center; display: flex;">Remove</button>
+        </li>
+      </ul>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>
